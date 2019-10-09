@@ -4,20 +4,28 @@
     "@babel/preset-env"
   ],
   "plugins": [
-    "@babel/plugin-proposal-decorators",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
     [
       "@babel/plugin-proposal-class-properties",
-      {"loose": true}
+      {
+        "loose": true
+      }
     ],
     [
       "@babel/plugin-transform-runtime",
       {
-        "corejs": false,
+        "corejs": 2,
         "helpers": true,
         "regenerator": true,
         "useESModules": false
       }
     ],
+    
     [
       "import",
       {
@@ -26,6 +34,5 @@
         "style": true
       }
     ]
-
   ]
 }

@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
+
 //__dirname  总是指向被执行 js 文件的绝对路径
 
 // webpack 入口文件所在目录
@@ -174,10 +175,10 @@ module.exports = {
     //启动热加载
     new webpack.HotModuleReplacementPlugin(),
     // 用法：new CleanWebpackPlugin(paths [, {options}])
-    new CleanWebpackPlugin({
-      verbose: false,  //开启在控制台输出信息
-      root: path.resolve(__dirname, '../dist')   // 根目录
-    }), 
+    // new CleanWebpackPlugin({
+    //   verbose: false,  //开启在控制台输出信息
+    //   root: path.resolve(__dirname, '../dist')   // 根目录
+    // }), 
   ]
 
 }

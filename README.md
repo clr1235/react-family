@@ -123,3 +123,22 @@ react技术栈
 
     安装 babel-plugin-import 对组件进行按需加载：
     npm install babel-plugin-import --save-dev
+
+### 配置 webpack.prod.config.js 文件
+    webpack.config.dev.js 文件中的配置为基础，进行配置
+
+    将 mode 属性值修改为：‘production’
+    将 devtool 属性值修改为：‘hidden-source-map’
+    删除 devServer 属性所有的配置。
+    删除使用的热加载插件：·webpack.HotModuleReplacementPlugin`,
+
+    添加optimization 属性进行代码压缩
+    安装相关插件：
+    npm install uglifyjs-webpack-plugin optimize-css-assets-webpack-plugin --save-dev
+
+    使用 mini-css-extract-plugin 插件提取 CSS 代码
+    npm install mini-css-extract-plugin --save-dev
+    在 plugins 属性中引入
+    将 module 的 rules 中使用的 style-loader 替换为 MiniCssExtractPlugin.loader
+
+    使用 DefinePlugin 插件定义当前为生产环境
