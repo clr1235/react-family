@@ -10,7 +10,7 @@ import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
 
 import GlobalModel from './GlobalModel';
-import App from './app.js'
+import App from './app.js';
 
 const globalModel = new GlobalModel();
 
@@ -24,3 +24,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+
+

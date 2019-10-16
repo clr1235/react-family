@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 
 export default class GlobalModel {
-    @observable username = '小明';
+    @observable username = "小明";  // let username = observable("小明")
 
     @action
     changeUserName = (name) => {

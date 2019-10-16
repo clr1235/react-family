@@ -15,7 +15,7 @@ const src_ROOT_DIR = path.resolve(
 
 const appPublic = path.resolve(__dirname, '../public')
 
-// console.log(src_ROOT_DIR, 'src_ROOT_DIR-=-=-=-=-')
+// console.log(src_ROOT_DIR, 'src_ROOT_DIR-=-=-=-=-', path.resolve(__dirname, '../.eslintrc.js'))
 
 const PATH_ALIAS = {
   'components': path.resolve(src_ROOT_DIR, '../src/components'),
@@ -52,74 +52,75 @@ module.exports = {
     // 打印信息
     stats: 'errors-only',
   },
-
   module: {
     rules: [{
       test: /\.js$/,
-      use: {
+      exclude: /(node_modules)/,
+      use: [{
+        loader: 'eslint-loader',
+        options: { // 这里的配置项参数将会被传递到 eslint 的 CLIEngine 
+          formatter: require('eslint-friendly-formatter'),
+        }
+      }, {
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env', '@babel/react'],
           plugins: [
-            [
-              "@babel/plugin-proposal-decorators", 
-              { "legacy": true }
+              [
+                "@babel/plugin-proposal-decorators",
+                { "legacy": true }
+              ]
             ]
-          ]
         }
-      },
-      exclude: /(node_modules|bower_components)/,
-    }, {
-      test: /\.(css|less)$/,
-      exclude: /node_modules/,
-      use: [
-        {
-          loader: 'style-loader'
-        }, 
-        {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true,
-            modules: true,
-            localIdentName: '[local].[hash:8]'
-          }
-        }, 
-        {
-          loader: 'postcss-loader',
-          options: {
-            plugins: () => [autoprefixer()]
-          }
-        },
-        {
-          loader: 'less-loader',
-          options: {
-              javascriptEnabled: true
-          }
-        }
-      ]
+      }]
     }, {
       test: /\.(css|less)$/,
       include: /node_modules/,
       use: [{
-              loader: 'style-loader'
-          },
-          {
-              loader: 'css-loader',
-              options: {}
-          },
-          {
-              loader: 'postcss-loader',
-              options: {
-                  plugins: () => [autoprefixer()]
-              }
-          },
-          {
-              loader: 'less-loader',
-              options: {
-                  javascriptEnabled: true
-              }
-          }
-      ]
+        loader: 'style-loader'
+      },
+      {
+        loader: 'css-loader',
+        options: {}
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: () => [autoprefixer()]
+        }
+      },
+      {
+        loader: 'less-loader',
+        options: {
+          javascriptEnabled: true
+        }
+      }]
+    }, {
+      test: /\.(css|less)$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'style-loader'
+      },
+      {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+          modules: true
+          // localIdentName: '[local].[hash:8]'
+        }
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: () => [autoprefixer()]
+        }
+      },
+      {
+        loader: 'less-loader',
+        options: {
+          javascriptEnabled: true
+        }
+      }]
     }, {
       //解析图片资源
       test: /\.(png|svg|jpg|gif)$/,
@@ -153,8 +154,8 @@ module.exports = {
       ]
     }]
   },
-  
-  plugins:[
+
+  plugins: [
     /**html-webpack-plugin 插件有两个作用
      * 可以将public目录下的文件夹拷贝到dist输出文件夹下
      * 可以自动将dist下的js文件引入到html文件中

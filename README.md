@@ -77,6 +77,12 @@ react技术栈
     由于等会儿会使用 antd，所以引入 antd 时需要开启 less 的 javascript 选项，所以要将 less-loader 中的属性 javascriptEnabled 
     设置为 true。
 
+    安装 eslint-loader
+    babel-eslint 用来检测es6代码
+
+    React的ESLint规则
+    现在来添加一些检测React的代码规则，使用eslint-plugin-react
+
 ### 添加其它模块解析loader
     npm install file-loader csv-loader xml-loader html-loader markdown-loader --save-dev    
 
