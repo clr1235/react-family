@@ -1,11 +1,14 @@
 import { observable, action } from 'mobx';
 
-export default class GlobalModel {
+class GlobalStore {
     @observable username = "小明";  // let username = observable("小明")
 
     @action
-    changeUserName = (name) => {
-        this.username = name;
+    changeUserName2 = (name2) => {
+        this.username = name2;
     }
 
 }
+
+
+export default new GlobalStore();

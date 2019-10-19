@@ -9,13 +9,12 @@ import { ConfigProvider } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
 
-import GlobalModel from './GlobalModel';
+import GlobalStore from './globalStore';
 import App from './app.js';
 
-const globalModel = new GlobalModel();
 
 ReactDOM.render(
-  <Provider globalModel={globalModel}>
+  <Provider globalStore={GlobalStore}>
     <ConfigProvider locale={zhCN}>
       <BrowserRouter basename="/">
         <App />

@@ -140,6 +140,8 @@ module.exports = {
     'import/no-mutable-exports': [0],
     'import/newline-after-import': [0],
     'import/no-unresolved': [0],
-    'import/extensions': [0]
+    'import/extensions': [0],
+    'import/no-named-as-default': [0],
+    'import/no-named-as-default-member': [0]
   }
 };

@@ -1,10 +1,12 @@
 import React, { Fragment, Component } from 'react';
 import classNames from 'classnames';
-import { observer } from "mobx-react";
+import { observer, inject } from "mobx-react";
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
 import Loadable from 'global-components/Loadable';
 
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
+
+import Store from './store'
 
 import './less/index.less';
 
@@ -12,12 +14,12 @@ const { SubMenu } = Menu;
 const MenuItem = Menu.Item;
 const { Header, Content, Sider } = Layout;
 
-
 // const Home = Loadable({
 //   loader: () => import('pages/Home')
 // })
 
-
+@inject(Store)
+@observer
 export default class App extends Component {
   constructor(props) {
     super(props);
