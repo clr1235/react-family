@@ -8,7 +8,7 @@ import {Layout, Menu, Breadcrumb, Icon} from 'antd';
 
 import Store from './store'
 
-import './less/index.less';
+import styles from './scss/index.scss';
 
 const { SubMenu } = Menu;
 const MenuItem = Menu.Item;
@@ -18,7 +18,7 @@ const { Header, Content, Sider } = Layout;
 //   loader: () => import('pages/Home')
 // })
 
-@inject(Store)
+// @inject(Store)
 @observer
 export default class App extends Component {
   constructor(props) {
@@ -39,8 +39,8 @@ export default class App extends Component {
     
     return (
       <Layout>
-        <Header className="global_header">
-          <div className="global_logo">logo</div>
+        <Header className={styles.global_header}>
+          <div className={styles.global_logo}>logo</div>
           <Menu
             theme="dark"
             mode="horizontal"

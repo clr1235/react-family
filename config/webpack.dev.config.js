@@ -105,8 +105,9 @@ module.exports = {
         loader: 'css-loader',
         options: {
           sourceMap: true,
-          modules: true
-          // localIdentName: '[local].[hash:8]'
+          modules: {
+            localIdentName: '[name]-[local]-[hash:base64:5]'
+          },
         }
       },
       {
@@ -120,6 +121,22 @@ module.exports = {
         options: {
           javascriptEnabled: true
         }
+      }]
+    }, {
+      test:/\.scss$/,
+      exclude: /node_modules/,
+      use:[{
+        loader: 'style-loader'
+      }, {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+          modules: {
+            localIdentName: '[name]-[local]-[hash:base64:5]'
+          }
+        }
+      }, {
+        loader: 'sass-loader'
       }]
     }, {
       //解析图片资源
