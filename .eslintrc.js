@@ -134,6 +134,11 @@ module.exports = {
     'wrap-iife': [0],
     'indent': [0],
     'max-len': [0],
+    'no-undef': [0],
+    'no-unused-expressions': [0],
+    'block-spacing': [0],
+    'padded-blocks': [0],
+    'no-trailing-spaces': [0],
 
     //第三方插件导致的规则检测 eslint-plugin-import
     'import/first': [0],
@@ -142,6 +147,8 @@ module.exports = {
     'import/no-unresolved': [0],
     'import/extensions': [0],
     'import/no-named-as-default': [0],
-    'import/no-named-as-default-member': [0]
+    'import/no-named-as-default-member': [0],
+    'react/prop-types': [0],
+    'react/destructuring-assignment': [0]
   }
 };

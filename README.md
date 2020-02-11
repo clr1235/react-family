@@ -1,5 +1,5 @@
 # react-family
-react技术栈
+基于webpack从零开始手动构建的react技术栈 全家桶
 
 # 开始搭建
 ## 初始化项目

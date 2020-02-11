@@ -18,7 +18,7 @@ const appPublic = path.resolve(__dirname, '../public')
 // console.log(src_ROOT_DIR, 'src_ROOT_DIR-=-=-=-=-', path.resolve(__dirname, '../.eslintrc.js'))
 
 const PATH_ALIAS = {
-  'components': path.resolve(src_ROOT_DIR, '../src/components'),
+  '@common-components': path.resolve(src_ROOT_DIR, '../src/common/components'),
   'pages': path.resolve(src_ROOT_DIR, '../src/pages'),
   'router': path.resolve(src_ROOT_DIR, '../src/router'),
   'global-components': path.resolve(src_ROOT_DIR, '../src/global/components')

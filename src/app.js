@@ -1,10 +1,13 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, Component, useState } from 'react';
 import classNames from 'classnames';
 import { observer, inject } from "mobx-react";
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
 import Loadable from 'global-components/Loadable';
 
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
+
+import Button from '@common-components/Button';
+import Dialog from '@common-components/Dialog';
 
 import Store from './store'
 
@@ -14,12 +17,12 @@ const { SubMenu } = Menu;
 const MenuItem = Menu.Item;
 const { Header, Content, Sider } = Layout;
 
-// const Home = Loadable({
-//   loader: () => import('pages/Home')
-// })
+const Home = Loadable({
+  loader: () => import('pages/Home')
+})
 
 // @inject(Store)
-@observer
+// @observer
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +43,7 @@ export default class App extends Component {
     return (
       <Layout>
         <Header className={styles.global_header}>
-          <div className={styles.global_logo}>logo</div>
+          <div className={styles.global_logo}></div>
           <Menu
             theme="dark"
             mode="horizontal"
@@ -119,14 +122,9 @@ export default class App extends Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Content
-              style={{
-                background: '#fff',
-                padding: 24,
-                margin: 0,
-                minHeight: 280
-              }}
+              className={styles.global_container}
             >
-              Content
+              <Home />
             </Content>
           </Layout>
         </Layout>
