@@ -139,6 +139,7 @@ module.exports = {
     'block-spacing': [0],
     'padded-blocks': [0],
     'no-trailing-spaces': [0],
+    'prefer-template': [0],
 
     //第三方插件导致的规则检测 eslint-plugin-import
     'import/first': [0],
@@ -149,6 +150,8 @@ module.exports = {
     'import/no-named-as-default': [0],
     'import/no-named-as-default-member': [0],
     'react/prop-types': [0],
-    'react/destructuring-assignment': [0]
+    'react/destructuring-assignment': [0],
+    'import/order': [0],
+    'import/no-extraneous-dependencies': [0]
   }
 };
