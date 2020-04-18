@@ -5,7 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
-
+const NODE_ENV = process.env.NODE_ENV;
+console.log(process.env.NODE_ENV, 'env===')
 //__dirname  总是指向被执行 js 文件的绝对路径
 
 // webpack 入口文件所在目录
@@ -25,27 +26,32 @@ const PATH_ALIAS = {
 }
 
 module.exports = {
-  entry: path.resolve(__dirname, '../src/index.js'),
+  entry: {
+    app: path.resolve(__dirname, '../src/index.js')
+  },
   output: {
     path: path.resolve(__dirname, '../dist'),   // yarn build 命令打包之后会在此处生成用于输出
     filename: 'public/js/[name]-[hash:8].js',
     publicPath: '/'
   },
   //设置开发模式
-  mode: 'development',
-  devtool: 'inline-source-map',
-  // 设置别名
+  mode: NODE_ENV === 'dev' ? 'development' : 'production',
+  // 
+  devtool: 'eval-source-map',
+  // 解析
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: PATH_ALIAS
   },
   //配置webpack-dev-server
   devServer: {
-    contentBase: appPublic,
+    // devServer.publicPath 将用于确定应该从哪里提供 bundle，并且此选项优先。
+    contentBase: appPublic, //告诉服务器从哪里提供内容 只有在你想要提供静态文件时才需要
     overlay: {
       warnings: true,
       errors: true
     },
+    compress: true, // 一切服务都启用gzip压缩
     hot: true,
     host: 'localhost',
     port: 8000,
@@ -53,6 +59,7 @@ module.exports = {
     stats: 'errors-only',
   },
   module: {
+    
     rules: [{
       test: /\.js$/,
       exclude: /(node_modules)/,
@@ -186,17 +193,27 @@ module.exports = {
         collapseWhitespace: true, //删除空白符和换行符
         minifyCSS: true //压缩内敛css
       },
-      // hash: true
+      hash: true
     }),
     //friendly-errors-webpack-plugin 插件可以在命令行展示更有好的提示功能
     new FriendlyErrorsWebpackPlugin(),
     //启动热加载
     new webpack.HotModuleReplacementPlugin(),
     // 用法：new CleanWebpackPlugin(paths [, {options}])
-    // new CleanWebpackPlugin({
-    //   verbose: false,  //开启在控制台输出信息
-    //   root: path.resolve(__dirname, '../dist')   // 根目录
-    // }), 
-  ]
+    // 删除webpack打包生成的文件
+    new CleanWebpackPlugin({
+      verbose: false,  //开启在控制台输出信息
+      root: path.resolve(__dirname, '../dist')   // 根目录
+    }), 
+  ],
+  stats: {
+    children: false
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+
+    }
+  }
 
 }

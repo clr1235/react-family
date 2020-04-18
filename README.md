@@ -9,7 +9,8 @@
    npm install --save-dev webpack-cli
 ### 根据webpack文档编写最基础的配置文件
     新建webpack开发配置文件 touch webpack.dev.config.js
-
+### 安装 cross-env  用来在启动命令中配置NODE_ENV环境变量
+    yarn add cross-env
 ## 安装并创建eslint
    npm install eslint --save-dev
    ./node_modules/.bin/eslint --init

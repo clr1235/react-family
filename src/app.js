@@ -6,9 +6,6 @@ import Loadable from 'global-components/Loadable';
 
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
 
-import Button from '@common-components/Button';
-// import Dialog from '@common-components/Dialog';
-
 import Store from './store'
 
 import styles from './scss/index.scss';

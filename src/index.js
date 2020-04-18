@@ -12,7 +12,6 @@ import 'moment/locale/zh-cn';
 import GlobalStore from './globalStore';
 import App from './app.js';
 
-
 ReactDOM.render(
   <Provider globalStore={GlobalStore}>
     <ConfigProvider locale={zhCN}>
